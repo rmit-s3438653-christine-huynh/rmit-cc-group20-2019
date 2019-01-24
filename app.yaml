@@ -5,5 +5,14 @@ handlers:
 - url: /css
   static_dir: css
   
+- url: /temperature
+  script: temperature.php
+
+- url: /rainfall
+  script: rainfall.php
+
+- url: /climate
+  script: climate.php
+
 - url: /.* 
   script: index.php
