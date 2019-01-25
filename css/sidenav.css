@@ -36,6 +36,23 @@ body {
   padding: 0px 10px;
 }
 
+#t_container {
+  min-width: 310px; 
+  height: 400px; 
+  margin: 0 auto;
+}
+
+#r_container {
+  min-width: 310px; 
+  height: 400px; 
+  margin: 0 auto;
+}
+#c_container {
+  min-width: 320px;
+  height: 400px;
+  margin: 0 auto;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
