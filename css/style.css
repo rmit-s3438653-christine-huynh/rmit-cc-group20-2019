@@ -57,3 +57,8 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+#map {
+	margin-top: 50px;
+	height: 100%;
+}
