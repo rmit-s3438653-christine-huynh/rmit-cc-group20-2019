@@ -44,21 +44,17 @@ session_start();
 		$request = new Google_Service_Bigquery_QueryRequest();
 		$str = '';
 		
-		$request->setQuery("SELECT * FROM [daily_rainfall.bentleigh] LIMIT 10");
+		$request->setQuery("SELECT year, month, day, rainfall FROM [daily_rainfall.bentleigh] LIMIT 10");
 		
 		$response = $bigquery->jobs->query($projectId, $request);
 		$rows = $response->getRows();
 
 		$str = "<table>".
 		"<tr>" .
-		"<th>Product Code</th>" .
-		"<th>Station Number</th>" .
 		"<th>Year</th>" .
     "<th>Month</th>" .
 		"<th>Day</th>" .
     "<th>Rainfall (mm)</th>" .
-    "<th>Period (days)</th>" .
-    "<th>Quality</th>" .
 		"</tr>";
 		
 		foreach ($rows as $row)
