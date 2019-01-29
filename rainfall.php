@@ -1,31 +1,83 @@
 <!--Christine Huynh 2019-->
 <?php
+session_start();
   include_once("nav.html");
+  require_once 'php/google-api-php-client/vendor/autoload.php';
 ?>
 
 <html>
   <body>
   <div class="main">
     <h2>Rainfall page</h2>
-    <div class="input-group">
-      <label for="type">Type of data:</label>
-      <select class="form-control" id="observation" name="observation">
-        <option hidden >Select an observation</option>
-        <option value="Daily">Daily</option>
-        <option value="Monthly">Monthly</option>
-      </select>          
-    </div>
-    <div class="input-group">
-      <label for="type">Location:</label>
-      <select class="form-control" id="location" name="location">
-        <option hidden >Select a weather station</option>
-        <option value="Melbourne">Melbourne</option>
-        <option value="MelbourneAirport">Melbourne Airport</option>
-        <option value="EastMelbourne">East Melbourne</option>
-        <option value="NorthMelbourne">North Melbourne</option>
-      </select>          
-    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <form> 
+        <label>Observation:</label>
+        <label class="radio-inline">
+          <input type="radio" name="daily" checked>Daily
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="monthly">Monthly
+        </label>  
+          
+          <div class="dropdown">
+          <label>Location:</label>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-Choose a station-
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Melbourne</a></li>
+              <li><a href="#">East Melbourne</a></li>
+              <li><a href="#">North Melbourne</a></li>
+            </ul>
+          </div><!--dropdown-->
+        </form>
+      </div><!--col-sm-4-->
+    </div><!--row-->
+    <div class='content'>
+    <?php
+		$client = new Google_Client();
+		$client->useApplicationDefaultCredentials();
+		$client->addScope(Google_Service_Bigquery::BIGQUERY);
+		$bigquery = new Google_Service_Bigquery($client);
+		$projectId = 's3438653-cc2019';
+
+		$request = new Google_Service_Bigquery_QueryRequest();
+		$str = '';
+		
+		$request->setQuery("SELECT * FROM [daily_rainfall.bentleigh] LIMIT 10");
+		
+		$response = $bigquery->jobs->query($projectId, $request);
+		$rows = $response->getRows();
+
+		$str = "<table>".
+		"<tr>" .
+		"<th>Product Code</th>" .
+		"<th>Station Number</th>" .
+		"<th>Year</th>" .
+    "<th>Month</th>" .
+		"<th>Day</th>" .
+    "<th>Rainfall (mm)</th>" .
+    "<th>Period (days)</th>" .
+    "<th>Quality</th>" .
+		"</tr>";
+		
+		foreach ($rows as $row)
+		{
+			$str .= "<tr>";
+
+			foreach ($row['f'] as $field)
+			{
+				$str .= "<td>" . $field['v'] . "</td>";
+			}
+			$str .= "</tr>";
+		}
+
+		$str .= '</table></div>';
+
+		echo $str;
+	?>
+</div>
     <div id="r_container"></div>
-  </div>
+  </div><!--main-->
   </body>
 </html>
