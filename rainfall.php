@@ -1,6 +1,6 @@
 <!--Christine Huynh 2019-->
 <?php
-session_start();
+  session_start();
   include_once("nav.html");
   require_once 'php/google-api-php-client/vendor/autoload.php';
 ?>
@@ -20,16 +20,26 @@ session_start();
           <input type="radio" name="monthly">Monthly
         </label>  
           
-          <div class="dropdown">
-          <label>Location:</label>
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">-Choose a station-
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Melbourne</a></li>
-              <li><a href="#">East Melbourne</a></li>
-              <li><a href="#">North Melbourne</a></li>
-            </ul>
-          </div><!--dropdown-->
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select class="form-control-inline" id="location">
+            <option>Melbourne</option>
+            <option>East Melbourne</option>
+            <option>Melbourne Olympic Park</option>
+            <option>Melbourne Botanic Gardens</option>
+          </select>
+        </div><!--form-group-->
+
+        <div class="form-group">
+          <label for="year">Year:</label>
+          <select class="form-control-inline" id="year">
+            <option>1000</option>
+            <option>2000</option>
+            <option>3000</option>
+            <option>4000</option>
+          </select>
+        </div><!--form-group-->
+
         </form>
       </div><!--col-sm-4-->
     </div><!--row-->
