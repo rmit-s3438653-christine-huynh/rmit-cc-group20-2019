@@ -32,38 +32,19 @@
             }
 
 
-            
             $result = $c->query($query);
-            while($row = mysql_fetch_assoc($result))
-            {
-                $month = $row['Month'];
-                $precip = $row['Monthly Precipitation Total (millimetres)'];
-                $code = $row['Product code'];
-                $quality = $row['Quality'];
-                $station = $row['Station number'];
-                $year = $row['Year'];
-
-                $month = htmlspecialchars($row['Month'],ENT_QUOTES);
-                $precip = htmlspecialchars($row['Monthly Precipitation Total (millimetres)'],ENT_QUOTES);
-                $code = htmlspecialchars($row['Product code'],ENT_QUOTES);
-                $quality = htmlspecialchars($row['Quality'],ENT_QUOTES);
-                $station = htmlspecialchars($row['Station number'],ENT_QUOTES);
-                $year = htmlspecialchars($row['Year'],ENT_QUOTES);
-
-                echo "  <div style='margin:30px 0px;'>
+            if ($result) {
               
-                    Station: $station<br />
-                    Year: $year<br />
-                    Month: $month<br />
-                    Monthly Precipitation Total (millimetres): $precip<br />
-                  </div>
-                ";
-            }
-            $result->close();
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    echo $row['Month'];
+                    echo "<br/>";
+                }
+                $result->close();
+            } 
+      
 
             $c->close();
-
-
             ?>
             <div id="t_container"></div>
         </div>
