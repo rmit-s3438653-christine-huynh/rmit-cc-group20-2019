@@ -47,25 +47,24 @@
           <div class="form-group">
             <label for="year">Year:</label>
             <select class="form-dropdown_option">
-			<?php
-        $query = "SELECT Year FROM `monthly_rainfall`";
-        $result = $c->query($query);
+              <?php
+                $query = "SELECT DISTINCT Year FROM `monthly_rainfall` ORDER BY Year DESC";
+                $result = $c->query($query);
 
-        if ($result) {
-          while($row = mysqli_fetch_assoc($result)) {
-              echo "<option>".$row[Year]."</option>";
-          }
-          $result->close();
-        } 
-        $c->close();
-			?>
-
+                if ($result) {
+                  while($row = mysqli_fetch_assoc($result)) {
+                      echo "<option>".$row[Year]."</option>";
+                  }
+                  $result->close();
+                } 
+                $c->close();
+              ?>
             </select>
       
             <label>Month:</label>
               <select class="form-control-inline">
                 <option value="1">January</option>
-                <option value="2">Febuary</option>
+                <option value="2">February</option>
                 <option value="3">March</option>
                 <option value="4">April</option>
                 <option value="5">May</option>
