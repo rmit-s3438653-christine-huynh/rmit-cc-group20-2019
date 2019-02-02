@@ -34,11 +34,25 @@
           
           <div class="form-group">
             <label for="year">Year:</label>
-            <select class="form-control-inline">
-              <option>1000</option>
-              <option>2000</option>
-              <option>3000</option>
-              <option>4000</option>
+            <select class="form-dropdown_option">
+			<?php
+			$filter=mysql_query("SELECT Year FROM monthly_rainfall");
+			$menu="";
+			
+			while($row = mysql_fetch_array($filter))
+				
+				$menu="";
+					while($row=mysql_fetch_array($filter))
+						
+						{
+							$menu.="<option>".$row['dropdown_option']."</option>";
+						}
+						
+					$menu="</select></form>";
+					
+				echo$menu;
+			?>
+
             </select>
       
             <label>Month:</label>
