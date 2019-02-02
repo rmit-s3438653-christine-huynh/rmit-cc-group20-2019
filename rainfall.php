@@ -3,6 +3,18 @@
   session_start();
   include_once("nav.html");
 
+  $servername = "/cloudsql/s3438653-cc2019:us-east1:phpmyadmin-id";
+  $username = "root";
+  $password = "password";
+  $dbname = "cloudcomputing";
+  $c = new mysqli(null, $username, $password, $dbname, 0, $servername);
+
+  if ($c->connect_error) {
+      die('Connect Error (' . $c->connect_errno . ') '
+              . $c->connect_error);
+  } else {
+      echo '-----------------------------------------Success. ' . $c->host_info . "\n";
+  }
 ?>
 
 <html>
@@ -36,31 +48,34 @@
             <label for="year">Year:</label>
             <select class="form-dropdown_option">
 			<?php
-			$filter=mysql_query("SELECT Year FROM monthly_rainfall");
-			$menu="";
-			
-			while($row = mysql_fetch_array($filter))
-				
-				$menu="";
-					while($row=mysql_fetch_array($filter))
-						
-						{
-							$menu.="<option>".$row['dropdown_option']."</option>";
-						}
-						
-					$menu="</select></form>";
-					
-				echo$menu;
+        $query = "SELECT Year FROM `monthly_rainfall`";
+        $result = $c->query($query);
+
+        if ($result) {
+          while($row = mysqli_fetch_assoc($result)) {
+              echo "<option>".$row[Year]."</option>";
+          }
+          $result->close();
+        } 
+        $c->close();
 			?>
 
             </select>
       
             <label>Month:</label>
               <select class="form-control-inline">
-                <option>Jan</option>
-                <option>Feb</option>
-                <option>Mar</option>
-                <option>Apr</option>
+                <option value="1">January</option>
+                <option value="2">Febuary</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
               </select>
 
             <label>Day:</label>
