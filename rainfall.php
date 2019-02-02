@@ -12,9 +12,15 @@
     <div class="row">
       <div class="col-sm-4">
         <form action=""> 
-        <label>Observation:</label><br/>
-          <input id="obs_daily" type="radio" name="observation" value="daily" onclick="toggleObservation()" checked>Daily
-          <input id="obs_monthly" type="radio" name="observation"value="monthly" onclick="toggleObservation()">Monthly
+          <div class="form-group">
+            <label>Observation:</label>
+            <label class="radio-inline">
+              <input id="obs_daily "type="radio" name="observation" value="daily" onclick="toggleObservation()" checked>Daily
+            </label>
+            <label class="radio-inline">
+              <input id="obs_monthly" type="radio" name="observation" value="monthly" onclick="toggleObservation()">Monthly
+            </label>
+          </div><!--form-group-->
 
           <div class="form-group">
             <label for="location">Location:</label>
@@ -28,34 +34,41 @@
           
           <div class="form-group">
             <label for="year">Year:</label>
-            <select class="form-control-inline" id="year">
+            <select class="form-control-inline">
               <option>1000</option>
               <option>2000</option>
               <option>3000</option>
               <option>4000</option>
             </select>
+      
+            <label>Month:</label>
+              <select class="form-control-inline">
+                <option>Jan</option>
+                <option>Feb</option>
+                <option>Mar</option>
+                <option>Apr</option>
+              </select>
+
+            <label>Day:</label>
+              <select class="form-control-inline">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
           </div><!--form-group-->
 
           <div class="form-group">
-            <label for="year">Month:</label>
-            <select class="form-control-inline" id="year">
-              <option>Jan</option>
-              <option>Feb</option>
-              <option>Mar</option>
-              <option>Apr</option>
-            </select>
+            <label>Rainfall:</label>
+            <input type="text" class="form-control-inline"placeholder="Enter rainfall">
           </div><!--form-group-->
 
-          <p id="demo"></p>
-
-      </form>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
       </div><!--col-sm-4-->
     </div><!--row-->
-
-
-    <div class='content'>
-
-</div>
+    <p id="demo"></p>
+    <div class='content'></div>
     <div id="r_container"></div>
   </div><!--main-->
   </body>

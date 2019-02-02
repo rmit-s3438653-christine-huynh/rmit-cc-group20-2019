@@ -17,8 +17,5 @@ handlers:
 - url: /rainfall
   script: rainfall.php
 
-- url: /climate
-  script: climate.php
-
 - url: /.* 
   script: index.php
