@@ -77,7 +77,7 @@
                 <option value="12">December</option>
               </select>
 
-            <div id="day_dropdown">
+            <div class="day_dropdown">
 				<label>Day:</label>
 				<select class="form-control-inline">
 					<option>1</option>

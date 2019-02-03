@@ -11,7 +11,7 @@ function toggleObservation() {
 };
 
 function hide() {
-	var day = document.getElementById("day_dropdown");
+	var day = document.getElementsByClassName("day_dropdown");
 	if(!day.hasAttribute("hidden")) {
 		var att = document.createAttribute("hidden");
 		day.setAttributeNode(att);
@@ -19,7 +19,7 @@ function hide() {
 }
 
 function expose() {
-	var day = document.getElementById("day_dropdown");
+	var day = document.getElementsByClassName("day_dropdown");
 	if(day.hasAttribute("hidden"))
 		day.attributes.removeNamedItem("hidden");
 }
