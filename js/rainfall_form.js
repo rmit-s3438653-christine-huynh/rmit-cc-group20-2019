@@ -9,3 +9,17 @@ function toggleObservation() {
        document.getElementById("demo").innerHTML = "true: " + z;
     }
 };
+
+function hide() {
+	var day = document.getElementById("day_dropdown");
+	if(!day.hasAttribute("hidden")) {
+		var att = document.createAttribute("hidden");
+		day.setAttributeNode(att);
+	}
+}
+
+function expose() {
+	var day = document.getElementById("day_dropdown");
+	if(day.hasAttribute("hidden"))
+		day.attributes.removeNamedItem("hidden");
+}
