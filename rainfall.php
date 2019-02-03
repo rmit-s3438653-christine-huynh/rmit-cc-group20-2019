@@ -27,10 +27,10 @@
           <div class="form-group">
             <label>Observation:</label>
             <label class="radio-inline">
-              <input id="obs_daily "type="radio" name="observation" value="daily" onclick="toggleObservation()" onclick="expose()" checked>Daily
+              <input id="obs_daily "type="radio" name="observation" value="daily" onclick="expose()" onclick="toggleObservation()"  checked>Daily
             </label>
             <label class="radio-inline">
-              <input id="obs_monthly" type="radio" name="observation" value="monthly" onclick="toggleObservation()" onclick="hide()" >Monthly
+              <input id="obs_monthly" type="radio" name="observation" value="monthly" onclick="hide()" onclick="toggleObservation()"  >Monthly
             </label>
           </div><!--form-group-->
 
