@@ -12,8 +12,6 @@
   if ($c->connect_error) {
       die('Connect Error (' . $c->connect_errno . ') '
               . $c->connect_error);
-  } else {
-      echo '-----------------------------------------Success. ' . $c->host_info . "\n";
   }
 ?>
 

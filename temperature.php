@@ -1,5 +1,6 @@
 <!--Christine Huynh 2019-->
 <?php
+    session_start();
     include_once("nav.html");
 
     $servername = "/cloudsql/s3438653-cc2019:us-east1:phpmyadmin-id";
@@ -11,9 +12,7 @@
     if ($c->connect_error) {
         die('Connect Error (' . $c->connect_errno . ') '
                 . $c->connect_error);
-    } else {
-        echo '-----------------------------------------Success. ' . $c->host_info . "\n";
-    }
+    } 
 ?>
 <html>
     <body>
@@ -44,11 +43,19 @@
           
                 <div class="form-group">
                     <label for="year">Year:</label>
-                    <select class="form-dropdown-option">
-                        <option>1000</option>
-                        <option>2000</option>
-                        <option>3000</option>
-                        <option>4000</option>
+                    <select class="form-dropdown_option">
+                    <?php
+                        $query = "SELECT DISTINCT Year FROM `monthly_temperature` ORDER BY Year DESC";
+                        $result = $c->query($query);
+
+                        if ($result) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            echo "<option>".$row[Year]."</option>";
+                        }
+                        $result->close();
+                        } 
+                        $c->close();
+                    ?>
                     </select>
       
                     <label>Month:</label>
