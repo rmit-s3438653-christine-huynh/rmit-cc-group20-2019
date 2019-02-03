@@ -25,10 +25,10 @@
                 <div class="form-group">
                     <label>Observation:</label>
                     <label class="radio-inline">
-                        <input type="radio" name="optradio" onclick="expose()" checked>Daily
+                        <input type="radio" name="optradio" onclick="expose();show_daily()" checked>Daily
                     </label>
                      <label class="radio-inline">
-                        <input type="radio" name="optradio" onclick="hide()">Monthly
+                        <input type="radio" name="optradio" onclick="hide();show_monthly()">Monthly
                     </label>
                 </div>
     
@@ -88,18 +88,35 @@
             </div><!--row-->
 
 
-        <?php
-            $query = "SELECT * FROM `monthly_rainfall`";
-            $result = $c->query($query);
-            if ($result) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo $row['Month'];
-                    echo "<br/>";
-                }
-                $result->close();
-            } 
-            $c->close();
-        ?>
+			<div class="monthly" hidden>
+				<?php
+					$query = "SELECT * FROM `monthly_rainfall`";
+					$result = $c->query($query);
+					if ($result) {
+						while($row = mysqli_fetch_assoc($result)) {
+							echo $row['Month'];
+							echo "<br/>";
+						}
+						$result->close();
+					} 
+					$c->close();
+				?>
+			</div>
+			
+			<div class="daily" hidden>
+				<?php
+					$query = "SELECT * FROM `daily_rainfall`";
+					$result = $c->query($query);
+					if ($result) {
+						while($row = mysqli_fetch_assoc($result)) {
+							echo $row['Month'];
+							echo "<br/>";
+						}
+						$result->close();
+					} 
+					$c->close();
+				?>
+			</div>
         <div id="t_container"></div>
         </div><!--main-->
     </body>
