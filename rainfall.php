@@ -21,6 +21,7 @@
     <h1>Rainfall</h1>
     <div class="row">
       <div class="col-sm-4">
+	  <button onclick="rainfall_marker()">Show Maximum Rainfall Amount</button>
         <form action=""> 
           <div class="form-group">
             <label>Observation:</label>
@@ -102,6 +103,10 @@
         </form>
       </div><!--col-sm-4-->
     </div><!--row-->
+	<?php 
+	include_once("map.php")
+	?>
+	
     <p id="demo"></p>
     <div class='content'></div>
     <div id="r_container"></div>

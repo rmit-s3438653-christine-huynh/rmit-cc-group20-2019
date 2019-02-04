@@ -32,20 +32,21 @@ var stations = [
 ];
 
 var temp = [32, 35, 39, 40, 46, 30, 22, 23, 43, 25, 39, 37, 36, 39, 40, 37, 38, 39, 35, 40];
+var rain = [89.5, 108.6, 43.7, 58.9, 69.2, 57.3, 70.9, 80.3, 63.5];
 
 function temp_marker() {
 	for (var i = 0; i < stations.length; i++) {
 		var station = stations[i];
-		var marker = new google.maps.Marker({
+		var tempMarker = new google.maps.Marker({
 			position: {lat: station[3], lng: station[2]},
 			map: map,
 			title: station[1]
 		});
-	addInfo(marker, station, i);
+	addTempInfo(tempMarker, station, i);
 	}
 }
 
-function addInfo(marker, station, x) {
+function addTempInfo(tempMarker, station, x) {
 	var contentString = '<div id="content">'+
 		'<h1>'+ station[1] +'</h1>'+
 		'<div id="body_content">'+
@@ -57,7 +58,36 @@ function addInfo(marker, station, x) {
 	var infowindow = new google.maps.InfoWindow({
 		content: contentString
 	});
-	marker.addListener('click', function() {infowindow.open(map, marker);});
+	tempMarker.addListener('click', function() {infowindow.open(map, tempMarker);});
 }
+
+function rainfall_marker() {
+	for (var i = 0; i < 9; i++) {
+		var station = stations[i];
+		var rainMarker = new google.maps.Marker({
+			position: {lat: station[3], lng: station[2]},
+			map: map,
+			title: station[1]
+		});
+	addRainfallInfo(rainMarker, station, i);
+	}
+}
+
+function addRainfallInfo(rainMarker, station, x) {
+	var contentString = '<div id="content">'+
+		'<h1>'+ station[1] +'</h1>'+
+		'<div id="body_content">'+
+		'<p>Station Number: '+ station[0] +'</p>'+
+		'<p>Latitude: '+ station[3] +'</p>'+
+		'<p>Longitude: '+ station[2] +'</p>'+
+		'<p>Max temperature: '+ rain[x] +'</p>'+
+		'</div></div>';
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	});
+	rainMarker.addListener('click', function() {infowindow.open(map, rainMarker);});
+}
+
+
 
 		
