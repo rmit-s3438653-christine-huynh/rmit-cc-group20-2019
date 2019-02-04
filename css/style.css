@@ -2,6 +2,10 @@
    How TO - Fixed Sidebar (Unknown version) [HTML] 
    https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_fixed */
 
+   .h3 {
+    margin-top: 10px;
+   }
+   
    body {
     font-family: "Lato", sans-serif;
   }

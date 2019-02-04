@@ -44,3 +44,4 @@ function show_monthly() {
 		var attr = document.createAttribute("hidden");
 		daily_div.setAttributeNode(attr);
 	}
+}

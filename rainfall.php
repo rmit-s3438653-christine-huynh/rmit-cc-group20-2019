@@ -18,7 +18,7 @@
 <html>
   <body>
   <div class="main">
-    <h2>Rainfall</h2>
+    <h1>Rainfall</h1>
     <div class="row">
       <div class="col-sm-4">
         <form action=""> 
@@ -75,8 +75,8 @@
               </select>
 
             <div class="day_dropdown">
-				      <label>Day:</label>
-              <select class="form-control-inline">
+			    <label>Day:</label>
+                <select class="form-control-inline">
                 <?php
                   $query = "SELECT DISTINCT Day FROM `daily_rainfall` ORDER BY Day ASC";
                   $result = $c->query($query);
@@ -95,7 +95,7 @@
 
           <div class="form-group">
             <label>Rainfall:</label>
-            <input type="text" class="form-control-inline"placeholder="Enter rainfall">
+            <input type="text" class="form-control-inline"placeholder="millilitre(s)">
           </div><!--form-group-->
 
           <button type="submit" class="btn btn-default">Search</button>
