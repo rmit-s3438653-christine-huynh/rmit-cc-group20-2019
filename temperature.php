@@ -139,6 +139,9 @@
 					$c->close();
 				?>
 			</div>
+			<?php
+			include_once("map.php");
+			?>
         <div id="t_container"></div>
         </div><!--main-->
     </body>

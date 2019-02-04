@@ -1,5 +1,13 @@
 
 var map;
+
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: {lat: -37.82, lng: 144.94},
+		zoom: 10
+    });
+}
+
 var stations = [
 	[88162, 'Wallan (Kilmore Gap)', 144.97, -37.38],
 	[87166, 'Point Wilson',	144.54,	-38.10], 
@@ -20,14 +28,36 @@ var stations = [
 	[86079,	'Mornington', 145.07, -38.24],
 	[86077,	'Moorabbin Airport', 145.10, -37.98],
 	[86068,	'Viewbank', 145.10, -37.74],
-	[86038,	'Essendon Airport', 144.91, 37.73]
+	[86038,	'Essendon Airport', 144.91, -37.73]
 ];
 
+var temp = [32, 35, 39, 40, 46, 30, 22, 23, 43, 25, 39, 37, 36, 39, 40, 37, 38, 39, 35, 40];
 
-function initMap() {
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: -37.82, lng: 144.94},
-		zoom: 10
-    });
+function temp_marker() {
+	for (var i = 0; i < stations.length; i++) {
+		var station = stations[i];
+		var marker = new google.maps.Marker({
+			position: {lat: station[3], lng: station[2]},
+			map: map,
+			title: station[1]
+		});
+	addInfo(marker, station, i);
+	}
 }
 
+function addInfo(marker, station, x) {
+	var contentString = '<div id="content">'+
+		'<h1>'+ station[1] +'</h1>'+
+		'<div id="body_content">'+
+		'<p>Station Number: '+ station[0] +'</p>'+
+		'<p>Latitude: '+ station[3] +'</p>'+
+		'<p>Longitude: '+ station[2] +'</p>'+
+		'<p>Max temperature: '+ temp[x] +'</p>'+
+		'</div></div>';
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	});
+	marker.addListener('click', function() {infowindow.open(map, marker);});
+}
+
+		
