@@ -29,7 +29,7 @@ function show_daily() {
 	var monthly_div = document.getElementsByClassName("monthly")[0];
 	if(daily_div.hasAttribute("hidden")) 
 		daily_div.attributes.removeNamedItem("hidden");
-	if(!monthly_div.hasAttribute("hidden") {
+	if(!monthly_div.hasAttribute("hidden")) {
 		var attr = document.createAttribute("hidden");
 		monthly_div.setAttributeNode(attr);
 	}
@@ -40,7 +40,7 @@ function show_monthly() {
 	var monthly_div = document.getElementsByClassName("monthly")[0];
 	if(monthly_div.hasAttribute("hidden")) 
 		monthly_div.attributes.removeNamedItem("hidden");
-	if(!daily_div.hasAttribute("hidden") {
+	if(!daily_div.hasAttribute("hidden")) {
 		var attr = document.createAttribute("hidden");
 		daily_div.setAttributeNode(attr);
 	}

@@ -18,7 +18,7 @@
 <html>
   <body>
   <div class="main">
-    <h2>Rainfall page</h2>
+    <h2>Rainfall</h2>
     <div class="row">
       <div class="col-sm-4">
         <form action=""> 
@@ -55,7 +55,6 @@
                   }
                   $result->close();
                 } 
-                $c->close();
               ?>
             </select>
       
@@ -76,14 +75,22 @@
               </select>
 
             <div class="day_dropdown">
-				<label>Day:</label>
-				<select class="form-control-inline">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-				</select>
-			</div>
+				      <label>Day:</label>
+              <select class="form-control-inline">
+                <?php
+                  $query = "SELECT DISTINCT Day FROM `daily_rainfall` ORDER BY Day ASC";
+                  $result = $c->query($query);
+
+                  if ($result) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                      echo "<option>".$row[Day]."</option>";
+                    }
+                    $result->close();
+                  } 
+                  $c->close();
+                ?>
+              </select>
+			      </div>
           </div><!--form-group-->
 
           <div class="form-group">
