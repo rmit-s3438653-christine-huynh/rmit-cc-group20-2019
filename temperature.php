@@ -20,6 +20,7 @@
             <h1>Temperature</h1>
             <div class="row">
             <div class="col-sm-4">
+			<button onclick="temp_marker()">Show Maxium Temperature</button>
                 <form onsubmit="getUserSelection()">
                 <div class="form-group" id="observation">
                     <label>Observation:</label>
